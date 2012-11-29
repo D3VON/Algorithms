@@ -1,0 +1,87 @@
+Breadth first search
+
+// from wikipedia:
+In graph theory, breadth-first search (BFS) is a graph search algorithm 
+that begins at the root node and explores all the neighboring nodes. Then 
+for each of those nearest nodes, it explores their unexplored neighbor nodes,
+and so on, until it finds the goal.
+
+
+from: http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/GraphAlgor/breadthSearch.htm
+BREADTH FIRST SEARCH (G, S)
+
+Input:    A graph G and a vertex.
+Output: Edges labeled as discovery and cross edges in the connected component.
+
+Create a Queue Q.
+ENQUEUE (Q, S)    // Insert S into Q.
+While Q is not empty do
+    for each vertex v in Q do 
+        for all edges e incident on v do
+            if edge e is unexplored then
+                let w be the other endpoint of e.
+                if vertex w is unexpected then
+                    - mark e as a discovery edge
+                    - insert w into Q
+                else
+                    mark e as a cross edge
+
+
+http://www.indiastudychannel.com/projects/1370-Breadth-First-Search.aspx
+
+C // from wikipedia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Algorithm of Breadth-first search:
+ void BFS(VLink G[], int v) { 
+   int w;
+   VISIT(v);                    /*visit vertex v*/
+   visited[v] = 1;              /*mark v as visited : 1 */
+   ADDQ(Q,v);
+   while(!EMPTYQ(Q)) { 
+     v = DELQ(Q);               /*Dequeue v*/
+     w = FIRSTADJ(G,v);         /*Find first neighbor, return -1 if no neighbor*/
+     while(w != -1) { 
+       if(visited[w] == 0) { 
+         VISIT(w);              /*visit vertex w*/
+         ADDQ(Q,w);             /*Enqueue current visited vertex w*/
+         visited[w] = 1;        /*mark w as visited*/
+       }
+       w = NEXTADJ(G,v);        /*Find next neighbor, return -1 if no neighbor*/
+     }
+   }  
+ }
+
+C++ // from wikipedia!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+This is the implementation of the above informal algorithm, where the "so-far-unexamined" is handled by the parent array. For actual C++ applications, see the Boost Graph Library.
+
+Suppose we have a struct: 
+struct Vertex {
+ 	...
+ 	std::vector<int> out;
+ 	...
+ };
+and an array of vertices: (the algorithm will use the indices of this array, to handle the vertices) 
+std::vector<Vertex> graph(vertices);
+the algorithm starts from start and returns true if there is a directed path from start to end: 
+ bool BFS(const std::vector<Vertex>& graph, int start, int end) {
+   std::queue<int> next;
+   std::vector<int> parent(graph.size(), -1) ;
+   next.push(start);
+   parent[start] = start;
+   while (!next.empty()) {
+     int u = next.front();
+     next.pop();
+     // Here is the point where you can examine the u th vertex of graph
+     // For example:
+     if (u == end) return true;
+     for (std::vector<int>::const_iterator j = graph[u].out.begin(); j != graph[u].out.end(); ++j) {
+       // Look through neighbors.
+       int v = *j;
+       if (parent[v] == -1) {
+         // If v is unvisited.
+         parent[v] = u;
+         next.push(v);
+       }
+     }
+   }
+   return false;
+ }

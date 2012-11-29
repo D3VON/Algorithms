@@ -1,0 +1,29 @@
+# Original data is on the input tape; the other tapes are blank
+ function merge_sort(input_tape, output_tape, scratch_tape_C, scratch_tape_D)
+     while any records remain on the input_tape
+         while any records remain on the input_tape
+             merge( input_tape, output_tape, scratch_tape_C)
+             merge( input_tape, output_tape, scratch_tape_D)
+         while any records remain on C or D
+             merge( scratch_tape_C, scratch_tape_D, output_tape)
+             merge( scratch_tape_C, scratch_tape_D, input_tape)
+
+ # take the next sorted chunk from the input tapes, and merge into the single given output_tape.
+ # tapes are scanned linearly.
+ # tape[next] gives the record currently under the read head of that tape.
+ # tape[current] gives the record previously under the read head of that tape.
+ # (Generally both tape[current] and tape[previous] are buffered in RAM ...)
+ function merge(left[], right[], output_tape[])
+     do
+        if left[current] = right[current]
+            append left[current] to output_tape
+            read next record from left tape
+        else
+            append right[current] to output_tape
+            read next record from right tape
+    while left[current] < left[next] and right[current] < right[next]
+    if left[current] < left[next]
+        append current_left_record to output_tape
+    if right[current] < right[next]
+        append current_right_record to output_tape
+    return

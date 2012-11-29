@@ -1,0 +1,42 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: CS333 Program 3 Heapsort
+Date: Fri, 13 Feb 2009 10:51:48 -0500
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.cs.binghamton.edu/~pmadden/cs333/programs/p3-heapsort.html
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5579
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML=20
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>CS333 Program 3 =
+Heapsort</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3DISO-8859-1">
+<META content=3D"MSHTML 6.00.6000.16809" name=3DGENERATOR></HEAD>
+<BODY>
+<P>For program 3, implement heapsort. You'll need to write your own =
+heapify=20
+routines (they're all in the book). Make sure you index your heap from =
+zero, and=20
+use the fast (amortized linear time) build_heap function.</P>
+<P>Input and output will be slightly different from the prior two =
+assignments.=20
+The data will be ordered in PAIRS of integers. The first integer is the =
+student=20
+ID number (think in terms of the Binghamton B-number). The second =
+integer is the=20
+social security number. You will print out the students ordered by their =
+B=20
+number. For example</P>
+<P>53 123456789<BR>22 987654321<BR>37 555555555<BR>44 666666666</P>
+<P>should be sorted using heapsort, and printed as</P>
+<P>22 987654321<BR>37 555555555<BR>44 666666666<BR>53 123456789</P>
+<P>Do not print out any other information, or pause on the output, and =
+so on.=20
+I'll be checking the results against the output of my code, and if you =
+print=20
+anything extra, it makes checking much more difficult.</P>
+<P><BR></P></BODY></HTML>

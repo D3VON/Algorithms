@@ -1,0 +1,173 @@
+/* HEAP SORT
+ * You can compile this with something like
+ *     gcc HeapSort.c -o HeapSort
+ * and run it with something like
+ *     ./HeapSort                    /////????< datafile.txt
+ */
+
+// Devon McBride refactored this code from Intro. to Algorithms, 2nd Ed. 
+// -------------                           by Thomas H. Cormen, et al.
+
+#include <stdio.h>
+
+#define MAX_SIZE 1000000
+
+typedef struct StudentIdentifiers
+{
+  long studentID;
+  long ssn;
+};
+
+StudentIdentifiers bunch_of_sIDs[MAX_SIZE];
+
+void heapify(StudentIdentifiers IDs[], int semiRootIndex, int lastLeafIndex)
+{
+  int ok, maxChild;
+  StudentIdentifiers temp;
+
+  ok = 0; // flag if perculation can stop (0 means don't stop, 1 means stop)
+
+  //while there are children and leaves left to check...
+  while ( (semiRootIndex*2 <= lastLeafIndex) && (!ok) )
+  {
+    if ( semiRootIndex*2 == lastLeafIndex )
+      maxChild = semiRootIndex*2;
+    else if ( IDs[semiRootIndex*2].studentID > IDs[semiRootIndex*2 + 1].studentID )
+      maxChild = semiRootIndex*2;
+    else
+      maxChild = semiRootIndex*2 + 1;
+
+    if ( IDs[semiRootIndex].studentID < IDs[maxChild].studentID )
+    {
+      temp               = IDs[semiRootIndex];
+      IDs[semiRootIndex] = IDs[maxChild];
+      IDs[maxChild]      = temp;
+      semiRootIndex      = maxChild;
+    }
+    else
+      ok = 1;
+  }
+}
+
+
+
+void heapSort(StudentIdentifiers IDs[], int arraySize)
+{
+  int index;
+  StudentIdentifiers temp;
+
+  //make heap of given array
+  for ( index = (arraySize/2)-1; index >= 0; index-- )
+    heapify(IDs, index, arraySize);
+
+  //put biggest element (root) into last leaf's position, 
+  //then heapify the heap ONE LEAF LESS in size 
+  //(In other words, leave the leaf you just did alone.)
+  for ( index = arraySize-1; index >= 1; index-- )
+  {
+    temp   = IDs[0]; // temporarily store biggest element (from root)
+    IDs[0] = IDs[index]; // put last element (which is small) into root position
+    IDs[index] = temp; // put biggest element into last position
+    heapify(IDs, 0, index-1); // heapify "i-1"-sized heap 
+                              // (protect the leaf you just did)
+  }
+}
+
+
+
+int main(int argc, char *argv[])
+{
+/*
+  // set up data as structures and put into an array of structures
+  StudentIdentifiers s1;
+  s1.studentID = 52;
+  s1.ssn = 940123678;
+  
+  StudentIdentifiers s2;
+  s2.studentID = 22;
+  s2.ssn = 965483678;
+
+  StudentIdentifiers s3;
+  s3.studentID = 37;
+  s3.ssn = 856743686;
+
+  StudentIdentifiers s4;
+  s4.studentID = 11;
+  s4.ssn = 945837532;
+
+  StudentIdentifiers s5;
+  s5.studentID = 99;
+  s5.ssn = 159863678;
+
+  StudentIdentifiers s6;
+  s6.studentID = 14;
+  s6.ssn = 369523685;
+
+  StudentIdentifiers bunch_of_sIDs[] = { s1, s2, s3, s4, s5, s6 };
+*/
+
+
+// receive pairs of ints input to this program, save into struct array
+int m = 0;
+while (scanf("%d %d", &bunch_of_sIDs[m].studentID, &bunch_of_sIDs[m].ssn) == 2)
+  m++; // Prof. Madden says scanf is coolest thing ever invented. 
+
+
+
+  printf("before\n");
+  int i;
+  for (i=0; i<6 ; i++)
+  {
+    printf("%d ", bunch_of_sIDs[i].studentID);
+    printf("%d\n", bunch_of_sIDs[i].ssn);
+  }
+
+  printf("\n");
+
+  heapSort(bunch_of_sIDs, 6);
+
+  printf("after\n");
+  for (i=0; i<6 ; i++)
+  {
+    printf("%d ", bunch_of_sIDs[i].studentID);
+    printf("%d\n", bunch_of_sIDs[i].ssn);
+  }
+
+
+
+  /*
+  int i, j, n, temp;
+
+  n = 0;
+  while (scanf("%d", &data[n]) == 1)
+    ++n;
+  */
+
+  // Now you have an array with n elements in it.  Sort it, do a search, and so on.
+  
+  /*outer loop 'splits' array into sorted and unsorted sections, 
+    and considers element 0 the 1st sorted element.  Inner loop inserts
+    next element from the unsorted part into sorted part of list. 
+  */
+
+  
+  /*
+  for (j=1; j<n; j++)
+  {
+    temp = data[j];
+    i = j-1; 
+    while ( i>=0 && data[i]<temp)
+    {
+      data[i+1] = data[i];
+      i--;
+    }
+    data[i+1] = temp;
+  }
+  */
+
+  /* Print out the data in the order we read. */
+  /*
+  for (i = 0; i < n; ++i)
+    printf("%d\n", data[i]);
+  */
+}

@@ -1,0 +1,51 @@
+From: <Saved by Windows Internet Explorer 7>
+Subject: CS333 Program 2 - Merge sort
+Date: Fri, 13 Feb 2009 10:51:14 -0500
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://www.cs.binghamton.edu/~pmadden/cs333/programs/p2-mergesort.html
+X-MimeOLE: Produced By Microsoft MimeOLE V6.00.2900.5579
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>CS333 Program =
+2 - Merge sort</TITLE>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3DISO-8859-1">
+<META content=3D"MSHTML 6.00.6000.16809" name=3DGENERATOR></HEAD>
+<BODY>
+<P>For program 2, implement merge sort. MAKE SURE YOU FOLLOW THE =
+BOOK!</P>
+<P>Same sorting plan as with Insertion Sort (largest to smallest), same =
+input=20
+format. Submit this through the Blackboard Digital dropbox, and please =
+tag this=20
+as "PROGRAM 2". </P>
+<P>Due: February 12th, 2009 (before Midnight).</P>
+<P>Some things to note:</P>
+<UL>
+  <LI>Put your name into the source code comments!=20
+  <LI>Make sure you sort in reverse order (largest to smallest)=20
+  <LI>Please don't submit things in a TAR/RAR/TGZ file. You only need =
+one file=20
+  to implement everything, and a Makefile is not required. I can =
+unzip/untar,=20
+  but it's a hassle.=20
+  <LI>Don't put in any extra output, or prompting. It makes automatic =
+checking=20
+  of the output difficult.=20
+  <LI>The code should compile.=20
+  <LI>The code should not be windows-specific. It should compile and run =
+on Unix=20
+  machines. </LI></UL>
+<P>Prior grading deducted 1 point for a missing name; I'll increase this =
+to=20
+3.</P>
+<P>5 points off for printing in the wrong order.</P>
+<P>10 points off if it doesn't work (and have a O(n log n) =
+complexity).</P>
+<P> </P>
+<P> </P>
+<P> </P></BODY></HTML>
